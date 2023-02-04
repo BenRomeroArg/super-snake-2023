@@ -1,6 +1,7 @@
 body{
     margin: 0 auto;
-    background-color: black;
+    background-color:rgba(0, 0, 0, 0.3) ;
+    
 }
 .titulo{
     color: green;
@@ -93,5 +94,5 @@ body{
     padding: 10px 10px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(190, 183, 183);
+    background-color: rgb(122, 120, 120);
 }

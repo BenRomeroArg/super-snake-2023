@@ -41,7 +41,6 @@ const Snake = (function () {
       reset: function () {
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canv.width, canv.height);
-  
         tail = INITIAL_TAIL;
         points = 0;
         velocity.x = 0;
@@ -135,9 +134,8 @@ const Snake = (function () {
         if (velocity.x == -1 && velocity.y == 0) lastAction = ActionEnum.left;
         if (velocity.x == 1 && velocity.y == 0) lastAction = ActionEnum.right;
   
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';//fondo black
         ctx.fillRect(0,0,canv.width,canv.height);
-  
         if(walls) HitWall();
         else DontHitWall();
   
@@ -158,8 +156,9 @@ const Snake = (function () {
         ctx.fillStyle = 'rgb(46, 26, 179)';
         for(var i=0; i<trail.length-1; i++) {
           ctx.fillRect(trail[i].x * gridSize+1, trail[i].y * gridSize+1, 
-  gridSize-2, gridSize-2);
-  
+  gridSize-2, gridSize-2);//cuerpo
+          ctx.strokeRect(trail[i].x * gridSize+1, trail[i].y * gridSize+1, 
+            gridSize-2, gridSize-2);//marco
           // console.debug(i + ' => player:' + player.x, player.y + ', 
             //trail:' + trail[i].x, trail[i].y);
           if (!stopped && trail[i].x == player.x && trail[i].y == player.y){
@@ -187,10 +186,12 @@ const Snake = (function () {
             return false;
           })());
         }
-  
+        //manzanas
         ctx.fillStyle = 'red';
         ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, 
   gridSize-2);
+        ctx.strokeRect(fruit.x * gridSize+3, fruit.y * gridSize+3, gridSize-3, 
+          gridSize-3);//marco
   
         if(stopped) {
           ctx.fillStyle = 'rgba(250,250,250,0.8)';
