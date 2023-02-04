@@ -134,7 +134,7 @@ const Snake = (function () {
         if (velocity.x == -1 && velocity.y == 0) lastAction = ActionEnum.left;
         if (velocity.x == 1 && velocity.y == 0) lastAction = ActionEnum.right;
   
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';//fondo black
+        ctx.fillStyle = 'rgb(0, 0, 0)';//fondo black
         ctx.fillRect(0,0,canv.width,canv.height);
         if(walls) HitWall();
         else DontHitWall();
@@ -164,7 +164,11 @@ const Snake = (function () {
           if (!stopped && trail[i].x == player.x && trail[i].y == player.y){
             game.reset();
           }
+          //cuerpo de la vibora
           ctx.fillStyle = 'green';
+          ctx.strokeStyle = 'brown';
+          ctx.shadowColor = "green";
+          ctx.shadowBlur = 15;
         }
         ctx.fillRect(trail[trail.length-1].x * gridSize+1, 
   trail[trail.length-1].y * gridSize+1, gridSize-2, gridSize-2);
@@ -190,8 +194,9 @@ const Snake = (function () {
         ctx.fillStyle = 'red';
         ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, 
   gridSize-2);
-        ctx.strokeRect(fruit.x * gridSize+3, fruit.y * gridSize+3, gridSize-3, 
-          gridSize-3);//marco
+        ctx.shadowColor = "green";
+        ctx.strokeStyle = "black";
+        ctx.shadowBlur = 18;
   
         if(stopped) {
           ctx.fillStyle = 'rgba(250,250,250,0.8)';

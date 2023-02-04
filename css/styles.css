@@ -7,6 +7,7 @@ body{
     color: green;
     font-weight: bold;
     animation: titulo 5s ease-in-out 0s infinite normal;
+    
 }
 @keyframes titulo{
     25%{
