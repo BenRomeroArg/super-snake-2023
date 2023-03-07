@@ -42,6 +42,7 @@ const Snake = (function () {
         if('vibrate' in window.navigator){   
           window.navigator.vibrate(800);
         }
+
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canv.width, canv.height);
         tail = INITIAL_TAIL;
@@ -57,6 +58,7 @@ const Snake = (function () {
   
         trail = [];
         trail.unshift({ x: player.x, y: player.y });
+       
         // for(var i=0; i<tail; i++) trail.push({ x: player.x, y: player.y });
       },
   
@@ -172,6 +174,7 @@ const Snake = (function () {
           //cuerpo de la vibora
           ctx.fillStyle = 'green';
           ctx.strokeStyle = 'brown';
+          ctx.setLineDash([5,3,3]);
           ctx.shadowColor = "green";
           ctx.shadowBlur = 15;
         }
@@ -205,6 +208,7 @@ const Snake = (function () {
         ctx.fillStyle = 'red';
         ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, 
   gridSize-2);
+        
         ctx.shadowColor = "green";
         ctx.strokeStyle = "black";
         ctx.shadowBlur = 18;
