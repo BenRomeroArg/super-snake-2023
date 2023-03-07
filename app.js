@@ -62,14 +62,14 @@ const Snake = (function () {
           if (lastAction != ActionEnum.down){
             velocity.x = 0;
             velocity.y = -1;
-            navigator.vibrate(200);
+            
           }
         },
         down: function () {
           if (lastAction != ActionEnum.up){
             velocity.x = 0;
             velocity.y = 1;
-            navigator.vibrate(200)
+            
           }
         },
         left: function () {
@@ -176,6 +176,11 @@ const Snake = (function () {
   trail[trail.length-1].y * gridSize+1, gridSize-2, gridSize-2);
   
         if (player.x == fruit.x && player.y == fruit.y) {
+          if('vibrate' in window.navigator){
+            window.navigator.vibrate(200);
+            
+          }
+          
           if(!fixedTail) tail++;
           points++;
           if(points > pointsMax) pointsMax = points;
