@@ -1,42 +1,42 @@
 const Snake = (function () {
 
-    const INITIAL_TAIL = 4;
-    var fixedTail = true;
+  const INITIAL_TAIL = 4;
+  var fixedTail = true;
   
-    var intervalID;
+  var intervalID;
   
-    var tileCount = 10;
-    var gridSize = 400/tileCount;
+  var tileCount = 10;
+  var gridSize = 400/tileCount;
   
-    const INITIAL_PLAYER = { x: Math.floor(tileCount / 2), y: 
-  Math.floor(tileCount / 2) };
+  const INITIAL_PLAYER = { x: Math.floor(tileCount / 2), y: 
+    Math.floor(tileCount / 2)
+  };
   
-    var velocity = { x:0, y:0 };
-    var player = { x: INITIAL_PLAYER.x, y: INITIAL_PLAYER.y };
+  var velocity = { x:0, y:0 };
+  var player = { x: INITIAL_PLAYER.x, y: INITIAL_PLAYER.y };
+  var walls = false;
   
-    var walls = false;
+  var fruit = { x:1, y:1 };
   
-    var fruit = { x:1, y:1 };
+  var trail = [];
+  var tail = INITIAL_TAIL;
   
-    var trail = [];
-    var tail = INITIAL_TAIL;
+  var reward = 0;
+  var points = 0;
+  var pointsMax = 0;
   
-    var reward = 0;
-    var points = 0;
-    var pointsMax = 0;
+  var ActionEnum = { 'none':0, 'up':1, 'down':2, 'left':3, 'right':4 };
+  Object.freeze(ActionEnum);
+  var lastAction = ActionEnum.none;
   
-    var ActionEnum = { 'none':0, 'up':1, 'down':2, 'left':3, 'right':4 };
-    Object.freeze(ActionEnum);
-    var lastAction = ActionEnum.none;
-  
-    function setup () {
+  function setup () {
       canv = document.getElementById('gc');
       ctx = canv.getContext('2d');
   
       game.reset();
-    }
+  }
   
-    const game = {
+  const game = {
   
       reset: function () {
         ctx.fillStyle = 'black';
@@ -62,12 +62,14 @@ const Snake = (function () {
           if (lastAction != ActionEnum.down){
             velocity.x = 0;
             velocity.y = -1;
+            navigator.vibrate(200);
           }
         },
         down: function () {
           if (lastAction != ActionEnum.up){
             velocity.x = 0;
             velocity.y = 1;
+            navigator.vibrate(200)
           }
         },
         left: function () {
