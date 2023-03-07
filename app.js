@@ -39,6 +39,9 @@ const Snake = (function () {
   const game = {
   
       reset: function () {
+        if('vibrate' in window.navigator){   
+          window.navigator.vibrate(800);
+        }
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canv.width, canv.height);
         tail = INITIAL_TAIL;
@@ -177,6 +180,7 @@ const Snake = (function () {
   
         if (player.x == fruit.x && player.y == fruit.y) {
           if('vibrate' in window.navigator){
+            
             window.navigator.vibrate(200);
             
           }
