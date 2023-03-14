@@ -1,6 +1,6 @@
 const Snake = (function () {
 
-  const INITIAL_TAIL = 4;
+  const INITIAL_TAIL = 3;
   var fixedTail = true;
   
   var intervalID;
@@ -40,7 +40,7 @@ const Snake = (function () {
   
       reset: function () {
         if('vibrate' in window.navigator){   
-          window.navigator.vibrate(800);
+          window.navigator.vibrate([300,300,300]);
         }
 
         ctx.fillStyle = 'black';
@@ -124,7 +124,8 @@ const Snake = (function () {
           if(player.y < 1) game.reset();
           if(player.y > tileCount-2) game.reset();
   
-          ctx.fillStyle = 'rgb(46, 26, 179)';
+          //ctx.fillStyle = 'rgb(46, 26, 179)';
+
           ctx.fillRect(0,0,gridSize-1,canv.height);
           ctx.fillRect(0,0,canv.width,gridSize-1);
           ctx.fillRect(canv.width-gridSize+1,0,gridSize,canv.height);
@@ -160,7 +161,7 @@ const Snake = (function () {
           ctx.fillText("(space) pause", 24, 374);
         }
   
-        ctx.fillStyle = 'rgb(46, 26, 179)';
+        //ctx.fillStyle = 'rgb(46, 26, 179)';
         for(var i=0; i<trail.length-1; i++) {
           ctx.fillRect(trail[i].x * gridSize+1, trail[i].y * gridSize+1, 
   gridSize-2, gridSize-2);//cuerpo
@@ -172,11 +173,11 @@ const Snake = (function () {
             game.reset();
           }
           //cuerpo de la vibora
-          ctx.fillStyle = 'green';
-          ctx.strokeStyle = 'brown';
+          //ctx.fillStyle = 'green';
+          ctx.strokeStyle = 'red';
           ctx.setLineDash([5,3,3]);
-          ctx.shadowColor = "green";
-          ctx.shadowBlur = 15;
+          //ctx.shadowColor = "green";
+          //ctx.shadowBlur = 15;
         }
         ctx.fillRect(trail[trail.length-1].x * gridSize+1, 
   trail[trail.length-1].y * gridSize+1, gridSize-2, gridSize-2);
@@ -184,7 +185,7 @@ const Snake = (function () {
         if (player.x == fruit.x && player.y == fruit.y) {
           if('vibrate' in window.navigator){
             
-            window.navigator.vibrate(200);
+            window.navigator.vibrate([190,180,170]);
             
           }
           
@@ -206,12 +207,14 @@ const Snake = (function () {
         }
         //manzanas
         ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'black';
+        ctx.setLineDash([8,8,8,8])
         ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, 
   gridSize-2);
         
-        ctx.shadowColor = "green";
+       //ctx.shadowColor = "green";
         ctx.strokeStyle = "black";
-        ctx.shadowBlur = 18;
+        //ctx.shadowBlur = 18;
   
         if(stopped) {
           ctx.fillStyle = 'rgba(250,250,250,0.8)';
