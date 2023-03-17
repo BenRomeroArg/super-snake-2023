@@ -1,21 +1,22 @@
 const audio = new Audio("music/Inception.mp3");
 
 $('#play-pause-button').on("click",function(){
-  if($(this).hasClass('fa-play'))
+  audio.autoplay = false;
+  if($(this).hasClass('play'))
    {
-     $(this).removeClass('fa-play');
-     $(this).addClass('fa-pause');
+     $(this).removeClass('play');
+     $(this).addClass('pause');
      audio.play();
    }
   else
    {
-     $(this).removeClass('fa-pause');
-     $(this).addClass('fa-play');
+     $(this).removeClass('pause');
+     $(this).addClass('play');
      audio.pause();
    }
 });
 
 audio.onended = function() {
-     $("#play-pause-button").removeClass('fa-pause');
-     $("#play-pause-button").addClass('fa-play');
+     $("#play-pause-button").removeClass('pause');
+     $("#play-pause-button").addClass('play');
 };

@@ -5,6 +5,7 @@ body{
 }
 .titulo{
     padding: 0px;
+    margin-top: 0px;
     color: green;
     font-weight: bold;
     animation: titulo 5s ease-in-out 0s infinite normal;
@@ -77,8 +78,8 @@ body{
     height: 70px;
     text-align: center;
     line-height: 100px;
-    background: grey;
-    color: white;
+    background-color: #eee;
+    color: #555;
     font-size: 50px;
     border-right: 10px solid #ccc;
     border-bottom: 10px solid #ccc;
@@ -111,12 +112,24 @@ header{
     font-weight: bolder;
     font-size: 1.5em;
     cursor: pointer;
-    padding: 4px;
-    border-radius: 5px;
+   
+    
     transition: 0.7s;
+    /*-------------------*/
+   
+    border-style: dotted;
+    border-width: 20px 20px 0 0;
+    content: "";
 }
 #play-pause-button:hover{
-    background-color: blueviolet;
+    background-color: #eee;
    
-    color: red;
+    color: #555;
 }
+
+.hv:hover{
+   
+    background-color: #555;
+    color: #eee;
+}
+
