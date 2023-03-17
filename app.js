@@ -1,38 +1,38 @@
 const Snake = (function () {
 
   const INITIAL_TAIL = 3;
-  var fixedTail = true;
+  let fixedTail = true;
   
-  var intervalID;
+  let intervalID;
   
-  var tileCount = 10;
-  var gridSize = 400/tileCount;
+  let tileCount = 10;
+  let gridSize = 400/tileCount;
   
   const INITIAL_PLAYER = { x: Math.floor(tileCount / 2), y: 
     Math.floor(tileCount / 2)
   };
   
-  var velocity = { x:0, y:0 };
-  var player = { x: INITIAL_PLAYER.x, y: INITIAL_PLAYER.y };
-  var walls = false;
+  let velocity = { x:0, y:0 };
+  let player = { x: INITIAL_PLAYER.x, y: INITIAL_PLAYER.y };
+  let walls = false;
   
-  var fruit = { x:1, y:1 };
+  let fruit = { x:1, y:1 };
   
-  var trail = [];
-  var tail = INITIAL_TAIL;
+  let trail = [];
+  let tail = INITIAL_TAIL;
   
-  var reward = 0;
-  var points = 0;
-  var pointsMax = 0;
+  let reward = 0;
+  let points = 0;
+  let pointsMax = 0;
   
-  var ActionEnum = { 'none':0, 'up':1, 'down':2, 'left':3, 'right':4 };
+  let ActionEnum = { 'none':0, 'up':1, 'down':2, 'left':3, 'right':4 };
   Object.freeze(ActionEnum);
-  var lastAction = ActionEnum.none;
+  let lastAction = ActionEnum.none;
   
   function setup () {
       canv = document.getElementById('gc');
       ctx = canv.getContext('2d');
-  
+      
       game.reset();
   }
   
@@ -59,7 +59,7 @@ const Snake = (function () {
         trail = [];
         trail.unshift({ x: player.x, y: player.y });
        
-        // for(var i=0; i<tail; i++) trail.push({ x: player.x, y: player.y });
+        // for(let i=0; i<tail; i++) trail.push({ x: player.x, y: player.y });
       },
   
       action: {
@@ -132,7 +132,7 @@ const Snake = (function () {
           ctx.fillRect(0, canv.height-gridSize+1,canv.width,gridSize);
         }
   
-        var stopped = velocity.x == 0 && velocity.y == 0;
+        let stopped = velocity.x == 0 && velocity.y == 0;
   
         player.x += velocity.x;
         player.y += velocity.y;
@@ -162,7 +162,7 @@ const Snake = (function () {
         }
   
         //ctx.fillStyle = 'rgb(46, 26, 179)';
-        for(var i=0; i<trail.length-1; i++) {
+        for(let i=0; i<trail.length-1; i++) {
           ctx.fillRect(trail[i].x * gridSize+1, trail[i].y * gridSize+1, 
   gridSize-2, gridSize-2);//cuerpo
           ctx.strokeRect(trail[i].x * gridSize+1, trail[i].y * gridSize+1, 
@@ -196,7 +196,7 @@ const Snake = (function () {
           game.RandomFruit();
           // make sure new fruit didn't spawn in snake tail
           while((function () {
-            for(var i=0; i<trail.length; i++) {
+            for(let i=0; i<trail.length; i++) {
               if (trail[i].x == fruit.x && trail[i].y == fruit.y) {
                 game.RandomFruit();
                 return true;
@@ -269,8 +269,9 @@ const Snake = (function () {
       start: function (fps = 15) {
         window.onload = setup;
         intervalID = setInterval(game.loop, 1000 / fps);
+       
       },
-  
+      
       loop: game.loop,
   
       reset: game.reset,
