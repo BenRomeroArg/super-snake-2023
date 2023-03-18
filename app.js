@@ -173,11 +173,11 @@ const Snake = (function () {
             game.reset();
           }
           //cuerpo de la vibora
-          //ctx.fillStyle = 'green';
-          ctx.strokeStyle = 'red';
+          ctx.fillStyle = 'rgba(249, 15, 9, 0.575)';
+          ctx.strokeStyle = "rgba(9,9,9, 0.943)"
           ctx.setLineDash([5,3,3]);
-          //ctx.shadowColor = "green";
-          //ctx.shadowBlur = 15;
+          
+          
         }
         ctx.fillRect(trail[trail.length-1].x * gridSize+1, 
   trail[trail.length-1].y * gridSize+1, gridSize-2, gridSize-2);
@@ -206,16 +206,17 @@ const Snake = (function () {
           })());
         }
         //manzanas
-        ctx.fillStyle = 'red';
-        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'rgba(100,200,50, 0.737)';
+        //ctx.strokeStyle = 'rgba(9,230,10, 0.437)';
         ctx.setLineDash([8,8,8,8])
         ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, 
-  gridSize-2);
-        
-       //ctx.shadowColor = "green";
+        gridSize-2);
+        ctx.fillRect((fruit.x * gridSize+1) - 3, (fruit.y * gridSize+1) + 2, (gridSize-2 )- 5, 
+        gridSize-2);
+        ctx.shadowColor = "rgba(236, 120, 10, 0.575)";
         ctx.strokeStyle = "black";
-        //ctx.shadowBlur = 18;
-  
+        ctx.shadowBlur = 12;
+       
         if(stopped) {
           ctx.fillStyle = 'rgba(250,250,250,0.8)';
           ctx.font = "small-caps bold 14px Helvetica";
