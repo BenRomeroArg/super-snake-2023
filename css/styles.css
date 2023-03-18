@@ -21,6 +21,21 @@ body{
         text-shadow: #eee 0 0 2px;
     }
 }
+.panel{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: center;
+    gap: 10px;
+}
+.pausa{
+    font-size: 1.5em;
+    color:rgb(122, 120, 120);
+    background-color: #eee;
+    padding: 2px;
+    border-radius: 8px;
+    
+}
 .game-canvas{
     /*width: 100%;*/
     height: 100vw;
@@ -106,9 +121,10 @@ header{
     flex-direction: column;
 }
 #play-pause-button{
-    margin: 0 auto;
+    padding: 2px;
+    border-radius: 8px;
     background-color: #555;
-    color: greenyellow;
+    color: #eee;
     font-weight: bolder;
     font-size: 1.5em;
     cursor: pointer;
@@ -117,9 +133,7 @@ header{
     transition: 0.7s;
     /*-------------------*/
    
-    border-style: dotted;
-    border-width: 20px 20px 0 0;
-    content: "";
+    
 }
 #play-pause-button:hover{
     background-color: #eee;

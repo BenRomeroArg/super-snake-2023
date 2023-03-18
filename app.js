@@ -318,6 +318,9 @@ const Snake = (function () {
           case 'down':
             game.action.down();
             break;
+          case 'pause':
+            Snake.pause();
+            break;
         }
       },
   
