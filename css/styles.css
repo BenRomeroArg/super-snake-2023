@@ -28,6 +28,15 @@ body{
     justify-content: center;
     gap: 10px;
 }
+.reset{
+    font-size: 1.5em;
+    color:rgb(122, 120, 120);
+    background-color: #eee;
+    padding: 2px;
+    border-radius: 8px;
+    
+
+}
 .pausa{
     font-size: 1.5em;
     color:rgb(122, 120, 120);

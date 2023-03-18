@@ -1,7 +1,11 @@
 const audio = new Audio("music/Inception.mp3");
 
+audio.loop = true; 
+audio.volume = 0.5;
+
+
 $('#play-pause-button').on("click",function(){
-  audio.autoplay = false;
+  
   if($(this).hasClass('play'))
    {
      $(this).removeClass('play');

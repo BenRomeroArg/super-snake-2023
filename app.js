@@ -321,6 +321,9 @@ const Snake = (function () {
           case 'pause':
             Snake.pause();
             break;
+          case 'reset':
+            Snake.reset();
+            break; 
         }
       },
   
